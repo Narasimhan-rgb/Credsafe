@@ -1,0 +1,25 @@
+LOANGUARD — CREATE ACCOUNT + NORMAL LOGIN
+
+BACKEND PATCH
+Copy backend-patch/src/main/java/com/secureloan/* into your Spring Boot project's src/main/java/com/secureloan/.
+This adds POST /api/auth/register and saves new users to PostgreSQL as BENEFICIARY accounts.
+
+RUN
+1. Spring Boot:
+cd /d "D:\AJVRPS TECH\Hackathons\sih\codes\Backend\secureloan\secureloan"
+.\mvnw.cmd spring-boot:run
+
+2. Python:
+cd /d "D:\AJVRPS TECH\Hackathons\sih\codes\ai-service"
+venv\Scripts\activate.bat
+python -m uvicorn main:app --reload --host 127.0.0.1 --port 8000
+
+3. Frontend:
+npm install
+npm run dev
+
+FLOW
+Create account -> account inserted into users + beneficiaries -> login with same mobile -> request OTP -> verify OTP -> background security correlation -> LOW risk allows dashboard; suspicious demo context blocks the same real account and creates/prioritizes an incident.
+
+NOTE
+The RegistrationService uses the physical table/column names visible in your current schema/JSON. If your beneficiaries table has a different column name, adjust only the INSERT statement there.
