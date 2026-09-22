@@ -4,7 +4,7 @@
 
 CredSafe / LoanGuard is a hackathon prototype for AI-assisted loan-utilization verification with risk-gated security protection. It combines OTP-based beneficiary authentication, real-time security risk correlation, and AI-driven evidence (photo) verification to catch account takeover and loan-fraud attempts while confirming that disbursed funds are used for their stated purpose.
 
-> ⚠️ Hackathon/research prototype — not production-hardened. See **Prototype Status** below.
+> **Incomplete backend export:** the frontend and AI service are present, but the Java backend cannot compile from this checkout. See [REPOSITORY_STATUS.md](REPOSITORY_STATUS.md) for missing source. The features below describe the intended project, not verified end-to-end behavior.
 
 ---
 
@@ -74,7 +74,7 @@ python -m uvicorn main:app --host 127.0.0.1 --port 8000
 ```
 
 ### Backend
-Copy `backend/src/main/resources/application.properties.example` to `application.properties`, set your local PostgreSQL credentials, then run the Spring Boot application (`./mvnw spring-boot:run`).
+Copy `backend/src/main/resources/application.properties.example` to `application.properties`, set your local PostgreSQL credentials, then restore the missing Java source listed in REPOSITORY_STATUS.md. This repository has no Maven wrapper; use Maven with Java 21 only after restoration.
 
 ### Frontend
 ```bash
@@ -92,7 +92,7 @@ Run all three services together — the frontend depends on the backend, which d
 
 This repository intentionally excludes local virtual environments, dependency folders, build artifacts, uploaded evidence, and local secrets/credentials. Real database credentials must live only in your local, git-ignored `application.properties` — never commit them.
 
-> **Action needed before pushing:** the working copy currently has real credentials hardcoded directly in `application.properties`. Move them into `application.properties.example` (with placeholder values) and add the real file to `.gitignore` before this note is accurate.
+Local credentials and generated files are excluded by the root `.gitignore`. Do not commit real database credentials.
 
 The `investigation/` and `response/` modules under `ai-service/` are scaffolded for future automated investigation and response-recommendation logic — they're currently empty placeholders, not yet wired in.
 
